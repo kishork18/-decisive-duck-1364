@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <title>Sign in</title>
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
         </div>
         <hr>
         <div id="logo">
-           <a href="./index.html"><img src="./Pasion (1).png" alt=""></a>
+            <a href="./index.html"><img src="./Pasion (1).png" alt=""></a>
            <form>
             <input  placeholder="Search" type="text">
             <button type="submit"><img src="./icons8-search.svg" alt=""></button> 
@@ -134,21 +134,21 @@
 </div>
 <div id="info">
   <form id="signup">
-    <h1>SIGN UP</h1>
-    <input class="input" id="email" type="email" placeholder="Email Address" required>
-    <input class="input" id="pass" type="password" placeholder="Password" required>
-    <input class="input" id="cpass" type="password" placeholder="Confirm Password" required>
+    <h1>SIGN IN</h1>
+    <input class="input" id="email" type="email" placeholder="Email Address" required="Email is required">
+    <input class="input" id="pass" type="password" placeholder="Password" required="Password is required">
   <div>
-    <input type="checkbox" required> <p>I agree to the receive news letters from Mirraw</p>
+    <input type="checkbox" required> <p>REMEMBER ME</p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp;
+   <p> Forgot Password?</p>
   </div>
-    <button>SIGN UP</button>
+    <button>SIGN IN</button>
+    <p>Don't have an Account ?</p> <a href="./signup.html">Create New account</a>
   </form>
   <hr>
   <div id="img">
   <img src="https://www.mirraw.com/assets/facebook_sign_in-e998b55d7d821ba819897132537e42149cee923ea215a5eaf0e2a6335efe6c67.png" alt="">
   <img src="https://www.mirraw.com/assets/google_sing_in-3426a2d2b760db2be7127653d216d7578e499c5e7df25fea1f861a56108d7d5b.png" alt="">
-</div>
-<div> <p>Have an account?</p> <a href="./signin.html">Sign in</a></div>
+  </div>
 </div>
 <div id="footer">
   <div>
@@ -262,26 +262,26 @@
 <script>
     let email=document.getElementById("email");
     let password=document.getElementById("pass");
-    let cpass=document.getElementById("cpass");
     let formdata=document.getElementById("signup");
-    let data= JSON.parse(localStorage.getItem("loginDetails")) || [];
+    let data= JSON.parse(localStorage.getItem("loginDetails"))|| [];
     formdata.addEventListener("submit",(e)=>{
       e.preventDefault();
-      if((data[0]!==undefined) && (data[0].Email===email.value)){
-          alert(email.value+" "+"Account already exist")
-      }
-      else if(password.value===cpass.value){
-        let obj={
-        Email:email.value,
-        Password:pass.value,
-      }
-      data.push(obj);
-      localStorage.setItem("loginDetails",JSON.stringify(data))
-      window.location.href= "./home.html"
-    }else{
-      alert("Password dose not match")
+      display(data);
+    });
+    function display(Data){
+      if(Data[0]===undefined){
+          alert(email.value+" "+"Does not exist please create an account")
+        }else{
+          Data.forEach(element => {
+         if(email.value===element.Email && password.value===element.Password){
+          window.location.href="./home.html"
+        }
+        else{
+          alert("Incorrect Email or Password")
+        }
+      });
     }
      
-    });
+    }
 </script>
 </html>
