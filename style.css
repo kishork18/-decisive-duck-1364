@@ -29,7 +29,7 @@ body{
     justify-content: end; 
    
 }
-#right>button{
+#right>a>button{
     background-color: rgb(255, 122, 6);
     border: none;
     margin-right: 20px;
@@ -37,8 +37,9 @@ body{
     border-radius: 3px;
     color: white;
     margin-top: 10px;
+    height: 30px;
 }
-#right>button:hover{
+#right>a>button:hover{
     background-color:  rgb(163, 78, 2);
     cursor: pointer;
 }
@@ -48,9 +49,9 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-#logo>img{
-    width: 20%;
-    height: 125px;
+#logo>a>img{
+    width: 100%;
+    height: 150px;
 }
 #logo>form{
     width:50%;
@@ -331,12 +332,48 @@ h3{
 
   }
   #info{
-    width: 50%;
+    width: 40%;
     margin: auto;
     text-align: center;
     margin-top: 30px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
   }
+  .input{
+     display: block;
+     margin: auto;
+     margin-top: 20px;
+     width: 70%;
+     height:40px;
+  }
+  #signup>div>input{
+    display: block;
+    margin-left:80px;
+  }
+  #signup>div{
+    display: flex;
+    
+  }
+  #signup>button{
+    width: 170px;
+    height: 40px;
+    border: none;
+    background-color: orangered;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+
+  }
+  #signup>button:hover{
+    background-color: rgb(157, 44, 3) ;
+    cursor: pointer;
+  }
+  #img{
+   margin-top: 20px;
+  } 
   
  
   @media screen and (max-width:400px){
@@ -362,6 +399,18 @@ h3{
     }
     #footer2{
       display: block;
+    }
+    #info{
+      width: 90%;
+      margin: auto;
+      text-align: center;
+      margin-top: 30px;
+      /* border: 2px solid red; */
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
     }
 
   }
