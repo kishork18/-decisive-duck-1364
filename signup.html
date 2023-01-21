@@ -259,6 +259,7 @@
 </div>
 
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     let email=document.getElementById("email");
     let password=document.getElementById("pass");
@@ -268,18 +269,41 @@
     formdata.addEventListener("submit",(e)=>{
       e.preventDefault();
       if((data[0]!==undefined) && (data[0].Email===email.value)){
-          alert(email.value+" "+"Account already exist")
+          // alert(email.value+" "+"Account already exist")
+          Swal.fire({
+              position: 'top-end',
+              icon: 'info',
+              title: email.value+" "+"Account already exist",
+              showConfirmButton: false,
+              timer: 1500
+            })
       }
-      else if(password.value===cpass.value){
+       if(password.value===cpass.value){
         let obj={
         Email:email.value,
         Password:pass.value,
       }
       data.push(obj);
       localStorage.setItem("loginDetails",JSON.stringify(data))
-      window.location.href= "./home.html"
+      setTimeout(()=>{
+            window.location.href="./home.html"
+          },1500)
+      Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your account is created',
+  showConfirmButton: false,
+  timer: 1500
+})
     }else{
-      alert("Password dose not match")
+      // alert("Password dose not match")
+      Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Password dose not match',
+          showConfirmButton: false,
+          timer: 1500
+      })
     }
      
     });
