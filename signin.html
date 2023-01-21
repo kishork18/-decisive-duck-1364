@@ -259,6 +259,7 @@
 </div>
 
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     let email=document.getElementById("email");
     let password=document.getElementById("pass");
@@ -269,19 +270,44 @@
       display(data);
     });
     function display(Data){
-      if(Data[0]===undefined){
-          alert(email.value+" "+"Does not exist please create an account")
-        }else{
-          Data.forEach(element => {
-         if(email.value===element.Email && password.value===element.Password){
-          window.location.href="./home.html"
+      
+     
+        Data.forEach(element => {
+          if(element.Email===undefined || element.Email!==email.value){
+          // alert(email.value+" "+"Does not exist please create an account")
+          Swal.fire({
+         icon: 'warning',
+         title: 'Oops...',
+         text: 'Account dose not exist please create an account!',
+         footer: '<a href="./signup.html">Create an account?</a>'
+       })
+      }
+      else if(email.value===element.Email && password.value===element.Password){
+         
+          setTimeout(()=>{
+            window.location.href="./home.html"
+          },1500)
+          Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Signed in successfully',
+          showConfirmButton: false,
+          timer: 1500
+         })
         }
         else{
-          alert("Incorrect Email or Password")
+          // alert("Incorrect Email or Password")
+          Swal.fire({
+          position: 'top-end',
+            icon: 'error',
+           title: 'Incorrect Email Id or Password',
+           showConfirmButton: false,
+             timer: 1500
+})
         }
       });
     }
      
-    }
+    
 </script>
 </html>
